@@ -1,0 +1,15 @@
+@model IEnumerable<SweetStore.Models.Treat>
+
+<div class="content">
+    <h1>Treats</h1>
+    <div class="columns">
+        @foreach (var treat in Model)
+        {
+            @Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId }, new { @class = "card" })
+        }
+    </div>
+    <div class="button-control">
+        @Html.ActionLink("Add New Treat", "Create", "Treats", null, new { @class = "btn btn-green" })
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-blue" })
+    </div>
+</div>
