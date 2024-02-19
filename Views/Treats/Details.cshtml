@@ -1,0 +1,29 @@
+@model SweetStore.Models.Treat
+
+<div class="content">
+    <div class="details">
+        <h3>Name: @Model.Name</h3>
+
+        <hr />
+        @if (Model.TreatFlavors == null || !Model.TreatFlavors.Any())
+        {
+            <p>This treat is not associated with any flavors.</p>
+        }
+        else
+        {
+            <h4>Flavors this treat is served in:</h4>
+            <ul>
+                @foreach (var treatFlavor in Model.TreatFlavors)
+                {
+                    <li>@treatFlavor.Flavor.Name</li>
+                }
+            </ul>
+        }
+        <br />
+
+        @Html.ActionLink("Add a flavor for this treat", "AddFlavor", "Treats", new { id = Model.TreatId }, new { @class = "btn btn-green" }) |
+        @Html.ActionLink("Edit treat", "Edit", new { id = Model.TreatId }, new { @class = "btn btn-yellow" }) |
+        @Html.ActionLink("Delete treat", "Delete", new { id = Model.TreatId }, new { @class = "btn btn-red" }) |
+        @Html.ActionLink("Back To List", "Index", "Treats", null, new { @class = "btn btn-blue" })
+    </div>
+</div>
