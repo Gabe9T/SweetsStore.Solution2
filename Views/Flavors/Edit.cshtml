@@ -1,0 +1,20 @@
+@model SweetStore.Models.Flavor
+
+<div class="content">
+    <h2>Edit</h2>
+
+    <h4>Edit this flavor: @Html.DisplayFor(model => model.Name)</h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.FlavorId)
+
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+
+        <input type="submit" value="Save" class="btn btn-green" />
+    }
+    <br />
+
+    @Html.ActionLink("Back To List", "Index", "Flavors", null, new { @class = "btn btn-blue" })
+</div>
